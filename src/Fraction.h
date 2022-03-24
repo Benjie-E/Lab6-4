@@ -47,7 +47,7 @@ public:
 	int getNumerator() const {return numerator;}
 	void setDenominator(int denominator) { this->denominator=denominator; }
 	void setNumerator(int numerator) { this->numerator=numerator; }
-	float toDecimal() const;
+	double toDecimal() const;
 
 	void fixSign();
 	bool divideByZero();

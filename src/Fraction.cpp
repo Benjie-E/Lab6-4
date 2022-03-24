@@ -85,9 +85,9 @@ Fraction Fraction::multiply(const Fraction &frac) const {
 	return f;
 }
 
-float Fraction::toDecimal() const{
+double Fraction::toDecimal() const{
 	//cout << this->numerator<<this->denominator<<endl;
-	float f=numerator;
+	double f=numerator;
 	f/=denominator;
 	return f;
 	//return (float)numerator/(float)denominator;

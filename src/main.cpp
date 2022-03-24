@@ -26,17 +26,17 @@ int main(){
 	cout << "Enter fraction 2:";
 	Fraction f2;
 	cin >> f2;
-	cout << "Fraction 1 + Fracion 2:" << f1+f2 << endl;
-	cout << "Fraction 1 - Fracion 2:" << f1-f2 << endl;
-	cout << "Fraction 1 * Fracion 2:" << f1*f2 << endl;
-	cout << "Fraction 1 / Fracion 2:" << f1/f2 << endl;
+	cout << f1<<" + " << f2 << " = " << f1+f2 << endl;
+	cout << f1<<" - " << f2 << " = " << f1-f2 << endl;
+	cout << f1<<" * " << f2 << " = " << f1*f2 << endl;
+	cout << f1<<" / " << f2 << " = " << f1/f2 << endl;
 
 	cout << boolalpha;
-	cout << "Fraction 1 > Fracion 2:" << (f1>f2) << endl;
-	cout << "Fraction 1 >= Fracion 2:" << (f1>=f2) << endl;
-	cout << "Fraction 1 == Fracion 2:" << (f1==f2) << endl;
-	cout << "Fraction 1 <= Fracion 2:" << (f1<=f2) << endl;
-	cout << "Fraction 1 < Fracion 2:" << (f1<f2) << endl;
+	cout << f1<<" > " << f2 << " = " << (f1>f2) << endl;
+	cout << f1<<" >= " << f2 << " = " << (f1>=f2) << endl;
+	cout << f1<<" == " << f2 << " = " << (f1==f2) << endl;
+	cout << f1<<" <= " << f2 << " = " << (f1<=f2) << endl;
+	cout << f1<<" < " << f2 << " = " << (f1<f2) << endl;
 }
 
 
