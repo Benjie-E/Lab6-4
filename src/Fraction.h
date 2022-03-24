@@ -30,22 +30,28 @@ public:
 	Fraction(const Fraction &other);
 	friend ostream &operator<<(ostream &out, Fraction fraction);
 	friend istream& operator>>(istream& in, Fraction &fraction);
-	void fixSign();
 
-	//Fraction operator+(const Fraction& frac) const{return add(frac);};
-	friend Fraction operator +(Fraction x,Fraction y){
-		return x;
-	}
+
+	Fraction operator+(const Fraction& frac) const{return add(frac);};
 	Fraction operator-(const Fraction& frac) const{return subtract(frac);};
 	Fraction operator/(const Fraction& frac) const{return divide(frac);};
 	Fraction operator*(const Fraction& frac) const{ return multiply(frac);};
+
+	bool operator<(const Fraction& frac) const;
+	bool operator<=(const Fraction& frac) const;
+	bool operator==(const Fraction& frac) const;
+	bool operator>=(const Fraction& frac) const;
+	bool operator>(const Fraction& frac) const;
 
 	int getDenominator() const {return denominator;}
 	int getNumerator() const {return numerator;}
 	void setDenominator(int denominator) { this->denominator=denominator; }
 	void setNumerator(int numerator) { this->numerator=numerator; }
-	float toDecimal();
+	float toDecimal() const;
 
+	void fixSign();
+	bool divideByZero();
+	void simplify();
 private:
 	Fraction add(const Fraction& frac) const;
 	Fraction subtract(const Fraction& frac) const;

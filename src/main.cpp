@@ -20,12 +20,23 @@
 #include "Fraction.h"
 using namespace std;
 int main(){
+	cout << "Enter fraction 1:";
 	Fraction f1;
 	cin >> f1;
-	//Fraction f2(3,7);
-	cout << "Rational is: " << f1 << endl;
-	//cout << f1.getP();
-	//cout << "hello world";
+	cout << "Enter fraction 2:";
+	Fraction f2;
+	cin >> f2;
+	cout << "Fraction 1 + Fracion 2:" << f1+f2 << endl;
+	cout << "Fraction 1 - Fracion 2:" << f1-f2 << endl;
+	cout << "Fraction 1 * Fracion 2:" << f1*f2 << endl;
+	cout << "Fraction 1 / Fracion 2:" << f1/f2 << endl;
+
+	cout << boolalpha;
+	cout << "Fraction 1 > Fracion 2:" << (f1>f2) << endl;
+	cout << "Fraction 1 >= Fracion 2:" << (f1>=f2) << endl;
+	cout << "Fraction 1 == Fracion 2:" << (f1==f2) << endl;
+	cout << "Fraction 1 <= Fracion 2:" << (f1<=f2) << endl;
+	cout << "Fraction 1 < Fracion 2:" << (f1<f2) << endl;
 }
 
 

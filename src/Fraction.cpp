@@ -16,11 +16,12 @@
  database for the purpose of future plagiarism checking)
  */
 #include "Fraction.h"
+#include <algorithm>
 Fraction::Fraction(){
 	numerator = 1;
 	denominator = 1;
 }
-Fraction::Fraction(int p,int q) {
+Fraction::Fraction(int p,int q=1) {
 	this->numerator = p;
 	this->denominator = q;
 	fixSign();
@@ -49,25 +50,67 @@ Fraction::Fraction(const Fraction &other) {
 }
 
 Fraction Fraction::add(const Fraction &frac) const {
-
+	Fraction f;
+	f.setNumerator(this->numerator*frac.denominator+frac.numerator*this->denominator);
+	f.setDenominator(this->denominator*frac.denominator);
+	f.simplify();
+	f.fixSign();
+	return f;
 }
 
 Fraction Fraction::subtract(const Fraction &frac) const {
-
+	Fraction f;
+	f.setNumerator(this->numerator*frac.denominator-frac.numerator*this->denominator);
+		f.setDenominator(this->denominator*frac.denominator);
+		f.simplify();
+		f.fixSign();
+		return f;
 }
 
 Fraction Fraction::divide(const Fraction &frac) const {
 	Fraction f;
-	f.numerator=this->numerator*frac.denominator;
-	f.denominator=this->denominator*frac.numerator;
+	f.setNumerator(this->numerator*frac.denominator);
+	f.setDenominator(this->denominator*frac.numerator);
+	f.simplify();
+	f.fixSign();
 	return f;
 }
 
 Fraction Fraction::multiply(const Fraction &frac) const {
 	Fraction f;
-	f.numerator=this->numerator*frac.numerator;
-	f.denominator=this->denominator*frac.denominator;
+	f.setNumerator(this->numerator*frac.numerator);
+	f.setDenominator(this->denominator*frac.denominator);
+	f.simplify();
+	f.fixSign();
 	return f;
+}
+
+float Fraction::toDecimal() const{
+	//cout << this->numerator<<this->denominator<<endl;
+	float f=numerator;
+	f/=denominator;
+	return f;
+	//return (float)numerator/(float)denominator;
+}
+
+bool Fraction::operator <(const Fraction &frac) const {
+	return this->toDecimal()<frac.toDecimal();
+}
+
+bool Fraction::operator <=(const Fraction &frac) const {
+	return this->toDecimal()<=frac.toDecimal();
+}
+
+bool Fraction::operator ==(const Fraction &frac) const {
+	return this->toDecimal()==frac.toDecimal();
+}
+
+bool Fraction::operator >=(const Fraction &frac) const {
+	return this->toDecimal()>=frac.toDecimal();
+}
+
+bool Fraction::operator >(const Fraction &frac) const {
+	return this->toDecimal()>frac.toDecimal();
 }
 
 void Fraction::fixSign(){
@@ -75,4 +118,18 @@ void Fraction::fixSign(){
 		denominator=-denominator;
 		numerator=-numerator;
 	}
+	divideByZero();
+}
+
+bool Fraction::divideByZero() {
+	if(denominator==0){
+		cout << "ERROR DIVIDE BY ZERO"<<endl;
+		exit(10);
+	}
+	return false;
+}
+void Fraction::simplify(){
+	int num=__gcd(numerator,denominator);
+	numerator/=num;
+	denominator/=num;
 }
